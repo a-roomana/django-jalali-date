@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name='django-jalali-date',
-        version='0.1.1',
+        version='0.1.4',
         packages=find_packages(),
         description = ('Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site.'),
         url = 'http://github.com/a-roomana/django-jalali-date',

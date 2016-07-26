@@ -1,0 +1,2 @@
+recursive-include jalali_date/static *
+include README.md
