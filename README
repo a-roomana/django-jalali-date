@@ -9,10 +9,19 @@ To use this module you need to install jdatetime(and of course you need django) 
 ----------
 **INSTALL**
 
-    pip install django-jalali-date
+    pip install django-jalali-date   
 
 ----------
 **USAGE**
+
+settings.py
+
+    INSTALLED_APPS = [
+	    ...
+	    'jalali_date',
+	    ...
+	]
+admin.py
 
 	from django.contrib import admin
 	from jalali_date import admin as j_admin
@@ -28,4 +37,4 @@ To use this module you need to install jdatetime(and of course you need django) 
 	class FirstModelAdmin(j_admin.ModelAdmin):
 		inlines = (MyInlines1, MyInlines2, )    
 
-![result](https://drive.google.com/file/d/0BxfgUeJSa39vQno0ZjZMNmplOTg/view?usp=sharing)
+![enter image description here](https://drive.google.com/open?id=0BxfgUeJSa39vQno0ZjZMNmplOTg)
