@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.db import models
 from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
-from jalali_date.admin import widgets as j_widgets
-from jalali_date.forms import fields as j_fields
+from jalali_date import widgets as j_widgets
+from jalali_date import fields as j_fields
 
 overrides = FORMFIELD_FOR_DBFIELD_DEFAULTS.copy()
 overrides.update({
