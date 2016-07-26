@@ -13,5 +13,5 @@ setup(
         license='Python Software Foundation License',
         platforms='any',
         requires = ["jdatetime","django"],
-        long_description=open('README').read()
+        long_description=open('README.md').read()
 )
