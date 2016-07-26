@@ -37,4 +37,4 @@ admin.py
 	class FirstModelAdmin(j_admin.ModelAdmin):
 		inlines = (MyInlines1, MyInlines2, )    
 
-![enter image description here](https://drive.google.com/open?id=0BxfgUeJSa39vQno0ZjZMNmplOTg)
+![example](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
