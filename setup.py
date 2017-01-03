@@ -17,7 +17,7 @@ README = read_file('README.md')
 
 setup(
         name='django-jalali-date',
-        version='0.1.9',
+        version='0.1.10',
         packages=find_packages(),
 	include_package_data=True,
         description = ('Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site.'),
@@ -28,7 +28,7 @@ setup(
         keywords = "django jalali date",
         license='Python Software Foundation License',
         platforms=['any'],
-        requires = ["jdatetime","django"],
+        install_requires = ["django","jdatetime"],
         long_description=README,
 	zip_safe=False,
 	classifiers = [
