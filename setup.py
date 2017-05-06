@@ -12,32 +12,37 @@ def read_file(filename):
         content = f.read()
     return content
 
+
 README = read_file('README.md')
 
-
 setup(
-        name='django-jalali-date',
-        version='0.1.9',
-        packages=find_packages(),
-	include_package_data=True,
-        description = ('Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site.'),
-        url = 'http://github.com/a-roomana/django-jalali-date',
-        download_url = 'https://pypi.python.org/pypi/django-jalali-date/',
-        author = 'Arman Roomana',
-        author_email = 'roomana.arman@gmail.com',
-        keywords = "django jalali date",
-        license='Python Software Foundation License',
-        platforms=['any'],
-        requires = ["jdatetime","django"],
-        long_description=README,
-	zip_safe=False,
-	classifiers = [
-		'Environment :: Web Environment',
-		'Framework :: Django',
-		'Intended Audience :: Developers',
-		'Operating System :: OS Independent',
-		'Programming Language :: Python',
-		'Topic :: Software Development :: Libraries :: Application Frameworks',
-		'Topic :: Software Development :: Libraries :: Python Modules',
-	],
+    name='django-jalali-date',
+    version='0.2.0',
+    packages=find_packages(),
+    include_package_data=True,
+    description=(
+    'Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site.'),
+    url='http://github.com/a-roomana/django-jalali-date',
+    download_url='https://pypi.python.org/pypi/django-jalali-date/',
+    author='Arman Roomana',
+    author_email='roomana.arman@gmail.com',
+    keywords="django jalali date",
+    license='Python Software Foundation License',
+    platforms=['any'],
+    install_requires=[
+        "pytz",
+        "django",
+        "jdatetime"
+    ],
+    long_description=README,
+    zip_safe=False,
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
 )

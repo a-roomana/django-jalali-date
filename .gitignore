@@ -2,3 +2,5 @@
 /.idea/
 /dist/
 /django_jalali_date.egg-info/
+
+.pypirc

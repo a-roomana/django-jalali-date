@@ -17,19 +17,52 @@ overrides.update({
 })
 
 
+def removed_in_next_version(msg=''):
+    if msg:
+        print '>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg)
+
+
+class ModelAdminJalaliMixin(object):
+    def __init__(self, *args, **kwargs):
+        super(ModelAdmin, self).__init__(*args, **kwargs)
+        self.formfield_overrides = overrides
+
+
+class StackedInlineJalaliMixin(object):
+    def __init__(self, *args, **kwargs):
+        super(StackedInline, self).__init__(*args, **kwargs)
+        self.formfield_overrides = overrides
+
+
+class TabularInlineJalaliMixin(object):
+    def __init__(self, *args, **kwargs):
+        super(TabularInline, self).__init__(*args, **kwargs)
+        self.formfield_overrides = overrides
+
+
+# removed in version 0.3
 class ModelAdmin(admin.ModelAdmin):
     def __init__(self, *args, **kwargs):
         super(ModelAdmin, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        removed_in_next_version(
+            'Django-Jalali-Date: "ModelAdmin" is removed in version 0.3, please use "ModelAdminJalaliMixin".\n\t\texample: class YourClass (admin.ModelAdmin, ModelAdminJalaliMixin):'
+        )
 
 
 class StackedInline(admin.StackedInline):
     def __init__(self, *args, **kwargs):
         super(StackedInline, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        removed_in_next_version(
+            'Django-Jalali-Date: "StackedInline" is removed in version 0.3, please use "StackedInlineJalaliMixin".\n\t\texample: class YourClass (admin.StackedInline, StackedInlineJalaliMixin):'
+        )
 
 
 class TabularInline(admin.TabularInline):
     def __init__(self, *args, **kwargs):
         super(TabularInline, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        removed_in_next_version(
+            'Django-Jalali-Date: "TabularInline" is removed in version 0.3, please use "TabularInlineJalaliMixin".\n\t\texample: class YourClass (admin.TabularInline, TabularInlineJalaliMixin):'
+        )
