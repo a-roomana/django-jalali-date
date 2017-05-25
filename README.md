@@ -43,14 +43,14 @@ admin.py
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin	
     
-class MyInlines1(admin.TabularInline, TabularInlineJalaliMixin):
+class MyInlines1(TabularInlineJalaliMixin, admin.TabularInline):
 	model = SecendModel
 
-class MyInlines2(admin.StackedInline, StackedInlineJalaliMixin):
+class MyInlines2(StackedInlineJalaliMixin, admin.StackedInline):
 	model = ThirdModel
 	
 @admin.register(FirstModel)
-class FirstModelAdmin(admin.ModelAdmin, ModelAdminJalaliMixin):
+class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	inlines = (MyInlines1, MyInlines2, )    
 ```
 
