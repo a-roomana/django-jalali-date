@@ -3,7 +3,7 @@ from pytz import timezone
 import jdatetime
 
 
-def datet2jalali(g_date):
+def date2jalali(g_date):
     return jdatetime.date.fromgregorian(date=g_date) if g_date else None
 
 

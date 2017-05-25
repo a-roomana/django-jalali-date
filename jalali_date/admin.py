@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from django.contrib import admin
 from django.db import models
 from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
@@ -24,20 +26,20 @@ def removed_in_next_version(msg=''):
 
 class ModelAdminJalaliMixin(object):
     def __init__(self, *args, **kwargs):
-        super(ModelAdmin, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class StackedInlineJalaliMixin(object):
     def __init__(self, *args, **kwargs):
-        super(StackedInline, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        super(StackedInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class TabularInlineJalaliMixin(object):
     def __init__(self, *args, **kwargs):
-        super(TabularInline, self).__init__(*args, **kwargs)
         self.formfield_overrides = overrides
+        super(TabularInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 # removed in version 0.3
