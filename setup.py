@@ -17,7 +17,7 @@ README = read_file('README.md')
 
 setup(
     name='django-jalali-date',
-    version='0.2.0',
+    version='0.2.1',
     packages=find_packages(),
     include_package_data=True,
     description=(
@@ -35,8 +35,9 @@ setup(
         "jdatetime"
     ],
     long_description=README,
+	use_2to3 = True,
     zip_safe=False,
-    classifiers=[
+	classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',

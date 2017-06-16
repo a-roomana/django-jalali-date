@@ -21,7 +21,7 @@ overrides.update({
 
 def removed_in_next_version(msg=''):
     if msg:
-        print '>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg)
+        print('>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg))
 
 
 class ModelAdminJalaliMixin(object):
