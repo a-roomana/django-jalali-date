@@ -21,12 +21,10 @@ overrides.update({
 
 def removed_in_next_version(msg=''):
     if msg:
-        print('>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg))
+        print '>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg)
 
 
 class ModelAdminJalaliMixin(object):
-    change_form_template = 'admin/jalali_change_form.html'
-
     def __init__(self, *args, **kwargs):
         self.formfield_overrides = overrides
         super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)

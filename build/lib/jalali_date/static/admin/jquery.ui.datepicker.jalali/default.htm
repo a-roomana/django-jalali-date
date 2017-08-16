@@ -1,0 +1,238 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fa">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>تست پلاگین انتخاب تاریخ</title>
+
+	<link type="text/css" href="themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="scripts/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/jquery.ui.datepicker-cc-fa.js"></script>
+
+    <script type="text/javascript">
+	    $(function() {
+	        // حالت پیشفرض
+	        $('#datepicker0').datepicker();
+	        //-----------------------------------
+	        // نمایش شماره هفته
+	        $('#datepicker1').datepicker({
+	            showWeek: true
+	        });
+	        //-----------------------------------
+	        // پرکردن فیلد اضافی
+	        $("#datepicker2").datepicker({
+	            dateFormat: 'dd/mm/yy',
+	            altField: '#alternate2',
+	            altFormat: 'DD، d MM yy'
+	        });
+	        //-----------------------------------
+	        // نمایش دکمه ها
+	        $('#datepicker3').datepicker({
+	            showButtonPanel: true
+	        });
+	        //-----------------------------------
+	        // تغییر قالب نمایش تاریخ و تغییر سایز خودکار فیلد
+	        $("#datepicker4").datepicker({
+	            dateFormat: 'dd/mm/yy',
+	            autoSize: true
+	        });
+	        $("#format4").change(function() {
+	            $('#datepicker4').datepicker('option', { dateFormat: $(this).val() });
+	        });
+	        //-----------------------------------
+	        // استفاده از dropdown
+	        $('#datepicker5').datepicker({
+	            changeMonth: true,
+	            changeYear: true
+	        });
+	        //-----------------------------------
+	        // انتخاب با کلیک بر روی عکس
+	        $("#datepicker6").datepicker({
+	            showOn: 'button',
+	            buttonImage: 'styles/images/calendar.png',
+	            buttonImageOnly: true
+	        });
+	        //-----------------------------------
+	        // نمایش inline
+	        $('#datepicker7').datepicker();
+	        //-----------------------------------
+	        // نمایش چند ماه
+	        $('#datepicker8').datepicker({
+	            numberOfMonths: 3,
+	            showButtonPanel: true
+	        });
+	        //-----------------------------------
+	        // غیرفعال کردن روزها
+	        $('#datepicker9').datepicker({
+	            beforeShowDay: function(date) {
+	                if (date.getDay() == 5)
+	                    return [false, '', 'تعطیلات آخر هفته'];
+	                return [true];
+	            }
+	        });
+	        //-----------------------------------
+	        // تاریخ پیشفرض
+	        $('#datepicker10').datepicker({
+	            defaultDate: new JalaliDate(1361, 4, 10)	//this means "1361/05/10"
+	        });
+	        //-----------------------------------
+	        // تنظیم حداقل و حداکثر
+	        $('#datepicker11').datepicker({
+	            minDate: '-3d',
+	            maxDate: '+1w +2d'
+	        });
+	        //-----------------------------------
+	        // تنظیم حداقل بصورت پویا
+	        $('#datepicker12from').datepicker({
+	            onSelect: function(dateText, inst) {
+	                $('#datepicker12to').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+	            }
+	        });
+	        $('#datepicker12to').datepicker();
+	        //-----------------------------------
+	        // استفاده همزمان از تقویم میلادی
+	        $('#datepicker13').datepicker({
+	            regional: ''
+	        });
+	        //-----------------------------------
+	        // استفاده همزمان از تقویم هجری قمری
+	        $('#datepicker14').datepicker({
+	            regional: 'ar'
+	        });
+	    });
+    </script>
+
+    <style type="text/css">
+        *
+        {
+            font-family: Tahoma !important;
+			padding:0;
+			margin:0;
+			border:0;
+        }
+        body
+        {
+			background-color: #0972a5;
+            direction: rtl;
+            font-size: 80%;
+        }
+        p
+        {
+            padding: 25px;
+            margin: 25px auto;
+            width: 450px;
+        }
+		p.ui-state-hover
+		{
+			font-weight: normal;
+		}
+        p.ui-widget-header
+        {
+            text-align: center;
+            font-weight: normal;
+        }
+        strong.ui-state-error
+        {
+            display: block;
+            padding: 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class='ui-widget-header'>
+            نمونه روشهای استفاده از پلاگین datepicker با تاریخ هجری شمسی<br />
+            توسط: <a href='http://hasheminezhad.com'>مهدی هاشمی نژاد</a><br />
+            ارایه نظرات و گزارش باگ: hasheminezhad at gmail dot com<br />
+			بروز شده به نسخه jquery-ui-1.10.3 توسط گروه Caspico
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>حالت پیشفرض</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker0" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>نمایش شماره هفته</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker1" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>پرکردن فیلد اضافی</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker2" />
+            <input type="text" id="alternate2" size="30" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>نمایش دکمه ها</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker3" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>تغییر قالب نمایش تاریخ و تغییر سایز خودکار فیلد</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker4" />
+            <select id="format4" class='ui-state-highlight'>
+                <option value="dd/mm/yy">کوتاه - dd/mm/yy</option>
+                <option value="d MM yy">متوسط - dd MM yy</option>
+                <option value="DD، d MM yy">کامل - DD, d MM, yy</option>
+                <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+                <option value="'روز' d MM 'سال' yy">دارای متن - 'روز' d MM 'سال' yy</option>
+            </select>
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>استفاده از dropdown</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker5" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>انتخاب با کلیک بر روی عکس</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker6" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>نمایش inline</strong><br />
+            <span id="datepicker7"></span>
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>نمایش چند ماه</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker8" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>غیرفعال کردن روزها</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker9" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>تاریخ پیشفرض</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker10" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>تنظیم حداقل و حداکثر</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker11" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>تنظیم حداقل بصورت پویا</strong><br />
+            از تاریخ:
+            <input type="text" id="datepicker12from" />
+            تا تاریخ:
+            <input type="text" id="datepicker12to" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>استفاده همزمان از تقویم میلادی</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker13" />
+        </p>
+        <p class='ui-widget-content'>
+            <strong class='ui-state-error'>استفاده همزمان از تقویم هجری قمری</strong><br />
+            تاریخ:
+            <input type="text" id="datepicker14" />
+        </p>
+    </div>
+</body>
+</html>

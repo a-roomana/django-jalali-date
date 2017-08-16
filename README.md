@@ -51,7 +51,8 @@ class MyInlines2(StackedInlineJalaliMixin, admin.StackedInline):
 	
 @admin.register(FirstModel)
 class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-	inlines = (MyInlines1, MyInlines2, )    
+	inlines = (MyInlines1, MyInlines2, )
+	readonly_fields = ('some_fields', 'date_field',)
 ```
 
 ![example](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
