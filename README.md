@@ -1,5 +1,5 @@
-[![PyPI](https://img.shields.io/pypi/dm/django-jalali-date.svg)](http://pythonhosted.org/django-jalali-date)
-[![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](http://pythonhosted.org/django-jalali-date)
+[![PyPI](https://img.shields.io/pypi/dm/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
+[![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
 [![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
 # django-jalali-date
 
@@ -19,21 +19,23 @@ To use this module you need to install jdatetime(and of course you need django) 
 **USAGE**
 
 settings.py
-
-    INSTALLED_APPS = [
-	    ...
-	    'jalali_date',
-	    ...
-	]
+```python
+INSTALLED_APPS = [
+	'django_apps',
 	
-	# defaults
-	JALALI_DATE_DEFAULTS = {
-       'STRFTIME': {
-            'date': '%y/%m/%d',
-            'datetime': '%H:%M:%S _ %y/%m/%d',
-        }
-    }
+	'jalali_date',
+	
+	'my_apps',
+]
 
+# defaults
+JALALI_DATE_DEFAULTS = {
+   'STRFTIME': {
+		'date': '%y/%m/%d',
+		'datetime': '%H:%M:%S _ %y/%m/%d',
+	}
+}
+```
 
 python_file.py
 ```python
