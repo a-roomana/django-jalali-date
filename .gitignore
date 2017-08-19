@@ -1,6 +1,7 @@
 *.pyc
 /.idea/
 /dist/
+/build/
 /django_jalali_date.egg-info/
 
 .pypirc

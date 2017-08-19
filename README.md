@@ -1,6 +1,10 @@
+[![PyPI](https://img.shields.io/pypi/dm/django-jalali-date.svg)](http://pythonhosted.org/django-jalali-date)
+[![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](http://pythonhosted.org/django-jalali-date)
+[![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
 # django-jalali-date
+
 Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site, view and templates.
- 
+
 ----------
 **DEPENDENCY**
 
@@ -21,6 +25,14 @@ settings.py
 	    'jalali_date',
 	    ...
 	]
+	
+	# defaults
+	JALALI_DATE_DEFAULTS = {
+       'STRFTIME': {
+            'date': '%y/%m/%d',
+            'datetime': '%H:%M:%S _ %y/%m/%d',
+        }
+    }
 
 
 python_file.py

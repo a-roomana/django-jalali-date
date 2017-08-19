@@ -1,6 +1,6 @@
-from django.conf import settings
 from pytz import timezone
 import jdatetime
+from jalali_date.settings import settings
 
 
 def date2jalali(g_date):

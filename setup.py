@@ -17,7 +17,7 @@ README = read_file('README.md')
 
 setup(
     name='django-jalali-date',
-    version='0.2.3',
+    version='0.2.4',
     packages=find_packages(),
     include_package_data=True,
     description=(
