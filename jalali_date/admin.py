@@ -26,47 +26,52 @@ def removed_in_next_version(msg=''):
 
 class ModelAdminJalaliMixin(object):
     change_form_template = 'admin/jalali_change_form.html'
+    formfield_overrides = overrides
 
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
         super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class StackedInlineJalaliMixin(object):
+    formfield_overrides = overrides
+
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
         super(StackedInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class TabularInlineJalaliMixin(object):
+    formfield_overrides = overrides
+
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
         super(TabularInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 # removed in version 0.3
 class ModelAdmin(admin.ModelAdmin):
+    formfield_overrides = overrides
+
     def __init__(self, *args, **kwargs):
         super(ModelAdmin, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
             'Django-Jalali-Date: "ModelAdmin" is removed in version 0.3, please use "ModelAdminJalaliMixin".\n\t\texample: class YourClass (admin.ModelAdmin, ModelAdminJalaliMixin):'
         )
 
 
 class StackedInline(admin.StackedInline):
+    formfield_overrides = overrides
+
     def __init__(self, *args, **kwargs):
         super(StackedInline, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
             'Django-Jalali-Date: "StackedInline" is removed in version 0.3, please use "StackedInlineJalaliMixin".\n\t\texample: class YourClass (admin.StackedInline, StackedInlineJalaliMixin):'
         )
 
 
 class TabularInline(admin.TabularInline):
+    formfield_overrides = overrides
+
     def __init__(self, *args, **kwargs):
         super(TabularInline, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
             'Django-Jalali-Date: "TabularInline" is removed in version 0.3, please use "TabularInlineJalaliMixin".\n\t\texample: class YourClass (admin.TabularInline, TabularInlineJalaliMixin):'
         )
