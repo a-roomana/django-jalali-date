@@ -1,72 +1,83 @@
-from __future__ import print_function
-
 from django.contrib import admin
 from django.db import models
-from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
-from jalali_date import widgets as j_widgets
-from jalali_date import fields as j_fields
+from jalali_date import removed_in_next_version
+from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
+from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
 
-overrides = FORMFIELD_FOR_DBFIELD_DEFAULTS.copy()
-overrides.update({
+overrides = {
     models.DateField: {
-        'form_class': j_fields.JalaliDateField,
-        'widget': j_widgets.AdminJalaliDateWidget
+        'form_class': JalaliDateField,
+        'widget': AdminJalaliDateWidget
     },
     models.DateTimeField: {
-        'form_class': j_fields.SplitJalaliDateTimeField,
-        'widget': j_widgets.AdminSplitJalaliDateTime
+        'form_class': SplitJalaliDateTimeField,
+        'widget': AdminSplitJalaliDateTime
     },
-})
-
-
-def removed_in_next_version(msg=''):
-    if msg:
-        print('>>>\t \x1b[%sm%s\x1b[0m' % ('31', msg))
+}
 
 
 class ModelAdminJalaliMixin(object):
     change_form_template = 'admin/jalali_change_form.html'
+    formfield_overrides = {}
 
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class StackedInlineJalaliMixin(object):
+    formfield_overrides = {}
+
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(StackedInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 class TabularInlineJalaliMixin(object):
+    formfield_overrides = {}
+
     def __init__(self, *args, **kwargs):
-        self.formfield_overrides = overrides
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(TabularInlineJalaliMixin, self).__init__(*args, **kwargs)
 
 
 # removed in version 0.3
 class ModelAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/jalali_change_form.html'
+
     def __init__(self, *args, **kwargs):
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(ModelAdmin, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
-            'Django-Jalali-Date: "ModelAdmin" is removed in version 0.3, please use "ModelAdminJalaliMixin".\n\t\texample: class YourClass (admin.ModelAdmin, ModelAdminJalaliMixin):'
+            'Django-Jalali-Date: "ModelAdmin" is removed in version 0.3, please use "ModelAdminJalaliMixin".\n\t\texample: class YourClass (ModelAdminJalaliMixin, admin.ModelAdmin):'
         )
 
 
 class StackedInline(admin.StackedInline):
     def __init__(self, *args, **kwargs):
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(StackedInline, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
-            'Django-Jalali-Date: "StackedInline" is removed in version 0.3, please use "StackedInlineJalaliMixin".\n\t\texample: class YourClass (admin.StackedInline, StackedInlineJalaliMixin):'
+            'Django-Jalali-Date: "StackedInline" is removed in version 0.3, please use "StackedInlineJalaliMixin".\n\t\texample: class YourClass (StackedInlineJalaliMixin, admin.StackedInline):'
         )
 
 
 class TabularInline(admin.TabularInline):
     def __init__(self, *args, **kwargs):
+        formfield_overrides = overrides.copy()
+        formfield_overrides.update(self.formfield_overrides)
+        self.formfield_overrides = formfield_overrides
         super(TabularInline, self).__init__(*args, **kwargs)
-        self.formfield_overrides = overrides
         removed_in_next_version(
-            'Django-Jalali-Date: "TabularInline" is removed in version 0.3, please use "TabularInlineJalaliMixin".\n\t\texample: class YourClass (admin.TabularInline, TabularInlineJalaliMixin):'
+            'Django-Jalali-Date: "TabularInline" is removed in version 0.3, please use "TabularInlineJalaliMixin".\n\t\texample: class YourClass (TabularInlineJalaliMixin, admin.TabularInline):'
         )

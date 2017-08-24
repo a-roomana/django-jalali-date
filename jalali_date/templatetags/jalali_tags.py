@@ -19,10 +19,10 @@ def to_jalali(g_date, strftime=None):
     if g_date is None:
         return '-'
     elif isinstance(g_date, datetime):
-        strftime = strftime if strftime else DEFAULTS['STRFTIME']['datetime']
+        strftime = strftime if strftime else DEFAULTS['Strftime']['datetime']
         return datetime2jalali(g_date).strftime(strftime)
     elif isinstance(g_date, date):
-        strftime = strftime if strftime else DEFAULTS['STRFTIME']['date']
+        strftime = strftime if strftime else DEFAULTS['Strftime']['date']
         return date2jalali(g_date).strftime(strftime)
     return '-'
 
@@ -37,10 +37,10 @@ def jalali_admin_safe_readonly(readonly_field, strftime=None):
     field_name = readonly_field.field['field']
     field = getattr(readonly_field.form.instance, field_name)
     if isinstance(field, datetime):
-        strftime = strftime if strftime else DEFAULTS['STRFTIME']['datetime']
+        strftime = strftime if strftime else DEFAULTS['Strftime']['datetime']
         return datetime2jalali(field).strftime(strftime)
     elif isinstance(field, date):
-        strftime = strftime if strftime else DEFAULTS['STRFTIME']['date']
+        strftime = strftime if strftime else DEFAULTS['Strftime']['date']
         return date2jalali(field).strftime(strftime)
 
     return readonly_field.contents
