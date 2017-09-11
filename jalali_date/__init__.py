@@ -1,7 +1,8 @@
 from __future__ import print_function
-from pytz import timezone
+
+from django.forms.utils import to_current_timezone
+from jalali_date import settings
 import jdatetime
-from jalali_date.settings import settings
 
 
 def date2jalali(g_date):
@@ -12,9 +13,7 @@ def datetime2jalali(g_date):
     if g_date is None:
         return None
 
-    if settings.USE_TZ:
-        g_date = g_date.astimezone(timezone(settings.TIME_ZONE))
-
+    g_date = to_current_timezone(g_date)
     return jdatetime.datetime.fromgregorian(datetime=g_date)
 
 

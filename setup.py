@@ -1,27 +1,28 @@
 #!/usr/bin/env python
 import codecs
-import os
 from setuptools import setup, find_packages
 
-here = os.path.abspath(os.path.dirname(__file__))
 
+try:
+    from pypandoc import convert
 
-def read_file(filename):
-    """Open a related file and return its content."""
-    with codecs.open(os.path.join(here, filename), encoding='utf-8') as f:
-        content = f.read()
-    return content
+    def read_me(filename):
+        return convert(filename, 'rst')
+except ImportError:
+    print("warning: pypandoc module not found, could not convert Markdown to RST")
 
+    def read_me(filename):
+        return codecs.open(filename, encoding='utf-8').read()
 
-README = read_file('README.md')
 
 setup(
     name='django-jalali-date',
-    version='0.2.5',
+    version='0.2.6',
     packages=find_packages(),
     include_package_data=True,
     description=(
-    'Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site.'),
+		'Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site, views, forms and templates.'
+	),
     url='http://github.com/a-roomana/django-jalali-date',
     download_url='https://pypi.python.org/pypi/django-jalali-date/',
     author='Arman Roomana',
@@ -30,11 +31,10 @@ setup(
     license='Python Software Foundation License',
     platforms=['any'],
     install_requires=[
-        "pytz",
         "django",
         "jdatetime"
     ],
-    long_description=README,
+    long_description=read_me('README.md'),
 	use_2to3 = True,
     zip_safe=False,
 	classifiers=[

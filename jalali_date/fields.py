@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.forms.fields import DateField, SplitDateTimeField, TimeField
+from django.forms.fields import DateField, SplitDateTimeField, TimeField, DateTimeField
 from django.utils.encoding import force_str
-from datetime import date as datetime_date
+from datetime import date as datetime_date, datetime as datetime_datetime
 from jdatetime import GregorianToJalali, datetime as jalali_datetime
+
+from jalali_date import datetime2jalali
 
 
 class JalaliDateField(DateField):
@@ -15,6 +17,16 @@ class JalaliDateField(DateField):
 
     def strptime(self, value, format):
         return jalali_datetime.strptime(force_str(value), format).togregorian().date()
+
+
+class JalaliDateTimeField(DateTimeField):
+    def prepare_value(self, value):
+        if isinstance(value, datetime_datetime):
+            return datetime2jalali(value).strftime('%Y-%m-%d %H:%M:%S')
+        return value
+
+    def strptime(self, value, format):
+        return jalali_datetime.strptime(force_str(value), format).togregorian()
 
 
 class SplitJalaliDateTimeField(SplitDateTimeField):
