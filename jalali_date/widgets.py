@@ -24,6 +24,8 @@ class AdminJalaliDateWidget(AdminDateWidget):
 
 
 class AdminSplitJalaliDateTime(AdminSplitDateTime):
+    template_name = 'admin/widgets/jalali_split_datetime.html'  # for django >= 1.11
+
     def __init__(self, attrs=None):
         widgets = [AdminJalaliDateWidget, AdminTimeWidget]
         # Note that we're calling MultiWidget, not SplitDateTimeWidget, because
@@ -38,7 +40,7 @@ class AdminSplitJalaliDateTime(AdminSplitDateTime):
             return [date_str, value.time().replace(microsecond=0)]
         return [None, None]
 
-    def format_output(self, rendered_widgets):
+    def format_output(self, rendered_widgets):  # for django < 1.11
         return format_html(
             u'<p class="datetime">{} {} {} {}</p>', _('Date:'), rendered_widgets[0], _('Time:'), rendered_widgets[1]
         )
