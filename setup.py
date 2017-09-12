@@ -28,7 +28,7 @@ setup(
     author='Arman Roomana',
     author_email='roomana.arman@gmail.com',
     keywords="django jalali date",
-    license='Python Software Foundation License',
+    license='MIT',
     platforms=['any'],
     install_requires=[
         "django",
