@@ -34,17 +34,19 @@ JALALI_DATE_DEFAULTS = {
         'datetime': '%H:%M:%S _ %y/%m/%d',
     },
     'Static': {
-        'js': [
-            "jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js",
-            "jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js",
-            "jquery.ui.datepicker.jalali/scripts/calendar.js",
-            "jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js",
-            "jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js",
-            "js/main.js"
+        'js': [ # prefix address is 'admin/'
+            'js/django_jalali.min.js',
+            # or
+            # 'jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'js/main.js',
         ],
         'css': {
             'all': [
-                "admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css",
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
             ]
         }
     },
