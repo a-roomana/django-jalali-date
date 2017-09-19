@@ -44,3 +44,9 @@ def jalali_admin_safe_readonly(readonly_field, strftime=None):
         return date2jalali(field).strftime(strftime)
 
     return readonly_field.contents
+
+
+@register.simple_tag
+def jalali_now(strftime=None):
+    strftime = strftime if strftime else DEFAULTS['Strftime']['datetime']
+    return datetime2jalali(datetime.now()).strftime(strftime)
