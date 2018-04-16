@@ -2,6 +2,8 @@ from datetime import datetime, date
 from distutils.version import StrictVersion
 from django import get_version
 from django.conf import settings
+from django.template.defaultfilters import safe
+
 from jalali_date import date2jalali, datetime2jalali
 
 django_version = get_version()
@@ -42,5 +44,13 @@ def jalali_admin_safe_readonly(readonly_field, strftime=None):
     elif isinstance(field, date):
         strftime = strftime if strftime else DEFAULTS['Strftime']['date']
         return date2jalali(field).strftime(strftime)
+    elif field is None:
+        return '-'
 
     return readonly_field.contents
+
+
+@register.simple_tag
+def jalali_now(strftime=None):
+    strftime = strftime if strftime else DEFAULTS['Strftime']['datetime']
+    return datetime2jalali(datetime.now()).strftime(strftime)

@@ -3,7 +3,7 @@ from django.db import models
 from jalali_date import removed_in_next_version
 from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
 from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
-
+from django.contrib.admin import TabularInline, StackedInline
 overrides = {
     models.DateField: {
         'form_class': JalaliDateField,
@@ -28,6 +28,7 @@ class ModelAdminJalaliMixin(object):
 
 
 class StackedInlineJalaliMixin(object):
+    template = 'admin/edit_inline/jalali_stacked.html'
     formfield_overrides = {}
 
     def __init__(self, *args, **kwargs):
@@ -38,6 +39,7 @@ class StackedInlineJalaliMixin(object):
 
 
 class TabularInlineJalaliMixin(object):
+    template = 'admin/edit_inline/jalali_tabular.html'
     formfield_overrides = {}
 
     def __init__(self, *args, **kwargs):
@@ -62,6 +64,8 @@ class ModelAdmin(admin.ModelAdmin):
 
 
 class StackedInline(admin.StackedInline):
+    template = 'admin/edit_inline/jalali_stacked.html'
+
     def __init__(self, *args, **kwargs):
         formfield_overrides = overrides.copy()
         formfield_overrides.update(self.formfield_overrides)
@@ -73,6 +77,8 @@ class StackedInline(admin.StackedInline):
 
 
 class TabularInline(admin.TabularInline):
+    template = 'admin/edit_inline/jalali_tabular.html'
+
     def __init__(self, *args, **kwargs):
         formfield_overrides = overrides.copy()
         formfield_overrides.update(self.formfield_overrides)
