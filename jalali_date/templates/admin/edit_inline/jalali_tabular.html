@@ -53,7 +53,7 @@
               {% if not field.field.is_hidden %}
               <td{% if field.field.name %} class="field-{{ field.field.name }}"{% endif %}>
               {% if field.is_readonly %}
-                  <p>{{ field|jalali_admin_safe_readonly }}</p>
+                  <p>{% with field|jalali_admin_safe_readonly as f %}{{ f.contents }}{% endwith %}</p>
               {% else %}
                   {{ field.field.errors.as_ul }}
                   {{ field.field }}

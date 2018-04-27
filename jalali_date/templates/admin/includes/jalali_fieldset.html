@@ -15,7 +15,7 @@
                     {% else %}
                         {{ field.label_tag }}
                         {% if field.is_readonly %}
-                            <p>{{ field|jalali_admin_safe_readonly }}</p>
+                            <p>{% with field|jalali_admin_safe_readonly as f %}{{ f.contents }}{% endwith %}</p>
                         {% else %}
                             {{ field.field }}
                         {% endif %}
