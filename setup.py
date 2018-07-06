@@ -15,7 +15,7 @@ except ImportError:
 
 setup(
     name='django-jalali-date',
-    version='0.2.9a1',
+    version='0.2.9',
     packages=find_packages(),
     include_package_data=True,
     description=(
