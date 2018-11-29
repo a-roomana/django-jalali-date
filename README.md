@@ -1,4 +1,5 @@
 [![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/django-jalali-date.svg)
 [![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
 # django-jalali-date
 
