@@ -99,8 +99,8 @@ template.html
 
 <!-- for load css and js of default datepicker (you can use your datepicker. dateFormat: 'yy-mm-dd') -->
 	<!-- load directly (ofter load jQuery) -->
-		{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}
-		{% static 'admin/js/django_jalali.min.js' %}
+		<link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+		<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
 		<script>
 			$('.jalali_date-date').datepicker({
 				dateFormat: 'yy-mm-dd',
