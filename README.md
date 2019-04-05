@@ -1,3 +1,4 @@
+
 [![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-jalali-date.svg)](https://pypistats.org/packages/django-jalali-date)
 [![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
@@ -92,10 +93,24 @@ template.html
 <p>{{ request.user.date_joined|to_jalali:'%y/%m/%d _ %H:%M:%S' }}</p>
 
 <form method="post">{% csrf_token %}
-    {{ form.media }} <!-- optinal, for load css and js of default datepicker -->
     {{ form.as_p }}
     <input type="submit">
 </form>
+
+<!-- for load css and js of default datepicker (you can use your datepicker. dateFormat: 'yy-mm-dd') -->
+	<!-- load directly (ofter load jQuery) -->
+		{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}
+		{% static 'admin/js/django_jalali.min.js' %}
+		<script>
+			$('.jalali_date-date').datepicker({
+				dateFormat: 'yy-mm-dd',
+				changeMonth: true,
+				changeYear: true
+			})
+		</script>
+	<!-- OR -->
+	<!-- load by form -->
+		{{ form.media }}
 ```
 
 admin.py
