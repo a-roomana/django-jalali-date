@@ -1,4 +1,5 @@
 
+
 [![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-jalali-date.svg)](https://pypistats.org/packages/django-jalali-date)
 [![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
@@ -76,10 +77,11 @@ class TestForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(TestForm, self).__init__(*args, **kwargs)
-        self.fields['date'] = JalaliDateField(label=_('date'),
-            widget=AdminJalaliDateWidget # optional, for user default datepicker
+        self.fields['date'] = JalaliDateField(label=_('date'), # date format is  "yyyy-mm-dd"
+            widget=AdminJalaliDateWidget # optional, to use default datepicker
         )
-        # you can added a "class" to this field for user your datepicker!
+
+        # you can added a "class" to this field for use your datepicker!
         # self.fields['date'].widget.attrs.update({'class': 'jalali_date-date'})
 
         self.fields['date_time'] = SplitJalaliDateTimeField(label=_('date time'), 
@@ -97,21 +99,15 @@ template.html
     <input type="submit">
 </form>
 
-<!-- for load css and js of default datepicker (you can use your datepicker. dateFormat: 'yy-mm-dd') -->
-	<!-- load directly (ofter load jQuery) -->
+<!-- By default, Datepicker using jQuery, you need to set your script after loading jQuery! -->
+	<!-- loading directly -->
 		<link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
 		<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
-		<script>
-			$('.jalali_date-date').datepicker({
-				dateFormat: 'yy-mm-dd',
-				changeMonth: true,
-				changeYear: true
-			})
-		</script>
 	<!-- OR -->
-	<!-- load by form -->
+	<!-- loading by form (if used AdminJalaliDateWidget) -->
 		{{ form.media }}
 ```
+![example-template-form](http://bayanbox.ir/view/4091856023129600494/photo-2019-04-06-11-11-03-min.jpg)
 
 admin.py
 ```python
@@ -133,5 +129,4 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	    JSONField: {'widget': JSONEditor},
 	}
 ```
-
-![example](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
+![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
