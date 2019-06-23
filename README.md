@@ -37,15 +37,18 @@ JALALI_DATE_DEFAULTS = {
         'datetime': '%H:%M:%S _ %y/%m/%d',
     },
     'Static': {
-        'js': [ # prefix address is 'admin/'
-            'js/django_jalali.min.js',
-            # or
-            # 'jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
-            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
-            # 'jquery.ui.datepicker.jalali/scripts/calendar.js',
-            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
-            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
-            # 'js/main.js',
+        'js': [
+            # loading default jQuery
+            'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
         ],
         'css': {
             'all': [
@@ -123,6 +126,7 @@ class MyInlines2(StackedInlineJalaliMixin, admin.StackedInline):
 @admin.register(FirstModel)
 class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	inlines = (MyInlines1, MyInlines2, )
+	raw_id_fields = ('some_fields', )
 	readonly_fields = ('some_fields', 'date_field',)
 	# you can override formfield, for example:
 	formfield_overrides = {

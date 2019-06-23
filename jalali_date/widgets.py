@@ -14,7 +14,7 @@ class AdminJalaliDateWidget(AdminDateWidget):
     def media(self):
         js = settings.JALALI_DATE_DEFAULTS['Static']['js']
         css = settings.JALALI_DATE_DEFAULTS['Static']['css']
-        return forms.Media(js=[static("admin/%s" % path) for path in js], css=css)
+        return forms.Media(js=[static(path) for path in js], css=css)
 
     def __init__(self, attrs=None, format=None):
         final_attrs = {'class': 'jalali_date-date', 'size': '10'}
