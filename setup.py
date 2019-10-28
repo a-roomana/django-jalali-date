@@ -15,7 +15,7 @@ except ImportError:
 
 setup(
     name='django-jalali-date',
-    version='0.2.10',
+    version='0.3.0',
     packages=find_packages(),
     include_package_data=True,
     description=(
@@ -29,7 +29,7 @@ setup(
     license='MIT',
     platforms=['any'],
     install_requires=[
-        "django",
+        "django>=2.2",
         "jdatetime"
     ],
     long_description=read_me('README.md'),
