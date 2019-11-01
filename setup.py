@@ -29,7 +29,7 @@ setup(
     license='MIT',
     platforms=['any'],
     install_requires=[
-        "django>=2.2",
+        "django",
         "jdatetime"
     ],
     long_description=read_me('README.md'),

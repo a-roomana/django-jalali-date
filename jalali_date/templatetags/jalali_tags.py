@@ -1,8 +1,8 @@
-from datetime import datetime, date
+from datetime import date, datetime
 from distutils.version import StrictVersion
+
 from django import get_version
 from django.conf import settings
-from django.template.defaultfilters import safe
 
 from jalali_date import date2jalali, datetime2jalali
 
