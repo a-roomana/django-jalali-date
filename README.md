@@ -8,17 +8,26 @@
 Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site, view and templates.
 
 ----------
-**DEPENDENCY**
+**Dependency**
 
 To use this module you need to install jdatetime(and of course you need django) and pytz module which you can install it with easy_install or pip
 
 ----------
-**INSTALL**
+**Version Compatibility**
+
+We tested the latest version on the some Django versions
+- django == 1.11.27
+- django == 2.2.9
+
+But I think it will work properly on other versions as well.
+
+----------
+**Install**
 
     pip install django-jalali-date   
 
 ----------
-**USAGE**
+**Usage**
 
 settings.py
 ```python
