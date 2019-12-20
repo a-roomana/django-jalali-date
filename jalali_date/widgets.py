@@ -2,7 +2,7 @@
 from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget, AdminTimeWidget
 from django import forms
 from django.conf import settings
-from django.contrib.admin.templatetags.admin_static import static
+from django.templatetags.static import static
 from django.forms.utils import to_current_timezone
 from django.utils.html import format_html
 from django.utils.translation import ugettext as _
