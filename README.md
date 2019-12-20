@@ -16,8 +16,9 @@ To use this module you need to install jdatetime(and of course you need django) 
 **Version Compatibility**
 
 We tested the latest version on the some Django versions
-- django == 1.11.27
+- django == 3.0.1
 - django == 2.2.9
+- django == 1.11.27
 
 But I think it will work properly on other versions as well.
 
@@ -134,6 +135,9 @@ class MyInlines2(StackedInlineJalaliMixin, admin.StackedInline):
 	
 @admin.register(FirstModel)
 class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+	# show jalali date in list display 
+	list_display = ['some_fields', 'get_created_jalali']
+	
 	inlines = (MyInlines1, MyInlines2, )
 	raw_id_fields = ('some_fields', )
 	readonly_fields = ('some_fields', 'date_field',)
@@ -141,5 +145,11 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	formfield_overrides = {
 	    JSONField: {'widget': JSONEditor},
 	}
+	
+	def get_created_jalali(self, obj):
+		return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+	
+	get_created_jalali.short_description = 'تاریخ ایجاد'
+	get_created_jalali.admin_order_field = 'created'
 ```
 ![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
