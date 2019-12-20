@@ -2,16 +2,10 @@
 import codecs
 from setuptools import setup, find_packages
 
-try:
-    from pypandoc import convert
 
-    def read_me(filename):
-        return convert(filename, 'rst')
-except ImportError:
-    print("warning: pypandoc module not found, could not convert Markdown to RST")
+def read_me(filename):
+    return codecs.open(filename, encoding='utf-8').read()
 
-    def read_me(filename):
-        return codecs.open(filename, encoding='utf-8').read()
 
 setup(
     name='django-jalali-date',
@@ -33,6 +27,7 @@ setup(
         "jdatetime"
     ],
     long_description=read_me('README.md'),
+    long_description_content_type='text/markdown',
     use_2to3=True,
     zip_safe=False,
     classifiers=[
