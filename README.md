@@ -16,7 +16,6 @@ To use this module you need to install jdatetime(and of course you need django) 
 **Version Compatibility**
 
 We tested the latest version on the some Django versions
-- django == 3.0.1
 - django == 2.2.9
 - django == 1.11.27
 
