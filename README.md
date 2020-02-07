@@ -16,6 +16,7 @@ To use this module you need to install jdatetime(and of course you need django) 
 **Version Compatibility**
 
 We tested the latest version on the some Django versions
+- django == 3.0.3
 - django == 2.2.9
 - django == 1.11.27
 
@@ -47,12 +48,9 @@ JALALI_DATE_DEFAULTS = {
     },
     'Static': {
         'js': [
-            # loading default jQuery
-            'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
             # loading datepicker
             'admin/js/django_jalali.min.js',
             # OR
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',

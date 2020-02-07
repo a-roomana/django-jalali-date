@@ -9,10 +9,8 @@ JALALI_DATE_DEFAULTS = {
     },
     'Static': {
         'js': [
-            'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
             'admin/js/django_jalali.min.js',
             # or
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
