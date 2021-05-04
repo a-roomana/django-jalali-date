@@ -122,6 +122,7 @@ template.html
 admin.py
 ```python
 from django.contrib import admin
+from jalali_date import datetime2jalali, date2jalali
 from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin	
     
 class MyInlines1(TabularInlineJalaliMixin, admin.TabularInline):
