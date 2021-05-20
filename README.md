@@ -7,13 +7,13 @@
 
 Jalali Date support for user interface. Easy conversion of DateTimeFiled to JalaliDateTimeField within the admin site, view and templates.
 
-----------
-**Dependency**
+
+## Dependency
 
 To use this module you need to install jdatetime(and of course you need django) and pytz module which you can install it with easy_install or pip
 
-----------
-**Version Compatibility**
+
+## Version Compatibility
 
 We tested the latest version on the some Django versions
 - django == 3.0.3
@@ -22,15 +22,20 @@ We tested the latest version on the some Django versions
 
 But I think it will work properly on other versions as well.
 
-----------
-**Install**
+
+## Install
 
     pip install django-jalali-date   
 
-----------
-**Usage**
 
-settings.py
+## Usage
+
+**settings.py**
+
+- don't forget to make sure you've also added `jalali_date` to your `INSTALLED_APPS`.
+- any global settings for a Django Jalali Date are kept in a single configuration dictionary named `JALALI_DATE_DEFAULTS`
+  - you can change the default display of dates by override `Strftime`
+  - you can use your own date picker by override `Static` 
 ```python
 INSTALLED_APPS = [
 	'django_apps',
@@ -40,7 +45,7 @@ INSTALLED_APPS = [
 	'my_apps',
 ]
 
-# defaults
+# default settings
 JALALI_DATE_DEFAULTS = {
    'Strftime': {
         'date': '%y/%m/%d',
@@ -66,14 +71,14 @@ JALALI_DATE_DEFAULTS = {
 }
 ```
 
-views.py
+**views.py**
 ```python
 from jalali_date import datetime2jalali, date2jalali
 
 def my_view(request):
 	jalali_join = datetime2jalali(request.user.date_joined).strftime('%y/%m/%d _ %H:%M:%S')
 ```
-forms.py
+**forms.py**
 ```python
 from django import forms
 from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
@@ -98,7 +103,7 @@ class TestForm(forms.ModelForm):
             widget=AdminSplitJalaliDateTime # required, for decompress DatetimeField to JalaliDateField and JalaliTimeField
         )
 ```
-template.html
+**template.html**
 ```html    
 {% load jalali_tags %}
 
@@ -119,7 +124,7 @@ template.html
 ```
 ![example-template-form](http://bayanbox.ir/view/4091856023129600494/photo-2019-04-06-11-11-03-min.jpg)
 
-admin.py
+**admin.py**
 ```python
 from django.contrib import admin
 from jalali_date import datetime2jalali, date2jalali
