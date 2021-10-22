@@ -9,7 +9,7 @@ def read_me(filename):
 
 setup(
     name='django-jalali-date',
-    version='0.3.2',
+    version='1.0.0',
     packages=find_packages(),
     include_package_data=True,
     description=(

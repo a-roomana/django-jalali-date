@@ -14,13 +14,19 @@ To use this module you need to install jdatetime(and of course you need django) 
 
 
 ## Version Compatibility
+#### Python
+- python 3.8 and below is  compatible with 0.3.2 and below
+- python 3.X and above is compatible with 1.0.0 and above
 
-We tested the latest version on the some Django versions
-- django == 3.0.3
-- django == 2.2.9
-- django == 1.11.27
+#### Django
+I tested the latest version on some Django versions on python 3.8
+- django == 3.2.8
+- django == 2.2.24
 
-But I think it will work properly on other versions as well.
+I think it will work properly on other versions as well.
+
+If you plan to use it in Django 1.X, install version 0.3.2
+
 
 
 ## Install
