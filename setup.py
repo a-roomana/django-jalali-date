@@ -28,7 +28,6 @@ setup(
     ],
     long_description=read_me('README.md'),
     long_description_content_type='text/markdown',
-    # use_2to3=True,
     zip_safe=False,
     classifiers=[
         'Environment :: Web Environment',
