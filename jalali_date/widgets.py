@@ -10,7 +10,7 @@ from jdatetime import GregorianToJalali
 try:
     from django.utils.translation import ugettext as _  # Django < 4
 except ImportError:
-    from django.utils.translation import gettext as _ # Django >= 4
+    from django.utils.translation import gettext as _  # Django >= 4
 
 
 class AdminJalaliDateWidget(AdminDateWidget):
