@@ -5,8 +5,12 @@ from django.conf import settings
 from django.templatetags.static import static
 from django.forms.utils import to_current_timezone
 from django.utils.html import format_html
-from django.utils.translation import ugettext as _
 from jdatetime import GregorianToJalali
+
+try:
+    from django.utils.translation import ugettext as _
+except ImportError:
+    from django.utils.translation import gettext as _
 
 
 class AdminJalaliDateWidget(AdminDateWidget):
