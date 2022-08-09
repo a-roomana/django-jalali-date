@@ -155,10 +155,8 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	    JSONField: {'widget': JSONEditor},
 	}
 	
+	@admin.display(description='تاریخ ایجاد', ordering='created')
 	def get_created_jalali(self, obj):
 		return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
-	
-	get_created_jalali.short_description = 'تاریخ ایجاد'
-	get_created_jalali.admin_order_field = 'created'
 ```
 ![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
