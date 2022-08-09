@@ -3,6 +3,7 @@ from __future__ import print_function
 from django.conf import settings
 
 JALALI_DATE_DEFAULTS = {
+    'LIST_DISPLAY_AUTO_CONVERT': False,
     'Strftime': {
         'date': '%y/%m/%d',
         'datetime': '%H:%M:%S _ %y/%m/%d',

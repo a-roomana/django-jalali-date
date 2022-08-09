@@ -29,6 +29,9 @@ class ModelAdminJalaliMixin(object):
         super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)
 
     def get_list_display(self, request):
+        if not settings.JALALI_DATE_DEFAULTS['LIST_DISPLAY_AUTO_CONVERT']:
+            return super(ModelAdminJalaliMixin, self).get_list_display(request)
+
         list_display = list(super(ModelAdminJalaliMixin, self).get_list_display(request))
         for index, field_name in enumerate(list_display[:]):
             try:
