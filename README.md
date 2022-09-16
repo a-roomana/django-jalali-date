@@ -36,7 +36,7 @@ If you plan to use it in Django 1.X, install version 0.3.2
 
 ## Usage
 
-**settings.py**
+#### settings.py
 
 - don't forget to make sure you've also added `jalali_date` to your `INSTALLED_APPS`.
 - any global settings for a Django Jalali Date are kept in a single configuration dictionary named `JALALI_DATE_DEFAULTS`
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 	'my_apps',
 ]
 
-# default settings
+# default settings (optional)
 JALALI_DATE_DEFAULTS = {
    'Strftime': {
         'date': '%y/%m/%d',
@@ -77,14 +77,23 @@ JALALI_DATE_DEFAULTS = {
 }
 ```
 
-**views.py**
+(Optional) If you want the names of the dates to be displayed in Farsi, please add the following command to the settings.
+
+```python
+LANGUAGE_CODE = 'fa'
+
+import locale
+locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
+```
+
+#### views.py
 ```python
 from jalali_date import datetime2jalali, date2jalali
 
 def my_view(request):
 	jalali_join = datetime2jalali(request.user.date_joined).strftime('%y/%m/%d _ %H:%M:%S')
 ```
-**forms.py**
+#### forms.py
 ```python
 from django import forms
 from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
@@ -109,7 +118,8 @@ class TestForm(forms.ModelForm):
             widget=AdminSplitJalaliDateTime # required, for decompress DatetimeField to JalaliDateField and JalaliTimeField
         )
 ```
-**template.html**
+
+#### template.html
 ```html    
 {% load jalali_tags %}
 
@@ -130,7 +140,7 @@ class TestForm(forms.ModelForm):
 ```
 ![example-template-form](http://bayanbox.ir/view/4091856023129600494/photo-2019-04-06-11-11-03-min.jpg)
 
-**admin.py**
+#### admin.py
 ```python
 from django.contrib import admin
 from jalali_date import datetime2jalali, date2jalali
@@ -157,6 +167,6 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	
 	@admin.display(description='تاریخ ایجاد', ordering='created')
 	def get_created_jalali(self, obj):
-		return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+		return datetime2jalali(obj.created).strftime('%a, %d %b %Y %H:%M:%S')
 ```
 ![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
