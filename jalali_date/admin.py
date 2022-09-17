@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.exceptions import FieldDoesNotExist
+from django.core.exceptions import FieldDoesNotExist, FieldError
 from django.db import models
 
 from jalali_date import date2jalali, datetime2jalali
@@ -55,8 +55,14 @@ class ModelAdminJalaliMixin(object):
             elif isinstance(field, models.DateField):
                 strftime = settings.JALALI_DATE_DEFAULTS['Strftime']['date']
                 convert_func = date2jalali
+            else:
+                raise FieldError('The field must be an instance of DateTimeField or DateField')
 
-            return convert_func(getattr(obj, field.name)).strftime(strftime)
+            g_date = getattr(obj, field.name)
+            if not g_date:
+                return ''
+            else:
+                return convert_func(g_date).strftime(strftime)
 
         func.short_description = field.verbose_name
         return func
