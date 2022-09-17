@@ -29,37 +29,34 @@ class ModelAdminJalaliMixin(object):
         super(ModelAdminJalaliMixin, self).__init__(*args, **kwargs)
 
     def get_list_display(self, request):
-        if not settings.JALALI_DATE_DEFAULTS['LIST_DISPLAY_AUTO_CONVERT']:
-            return super(ModelAdminJalaliMixin, self).get_list_display(request)
+        list_display = super().get_list_display(request)
 
-        list_display = list(super(ModelAdminJalaliMixin, self).get_list_display(request))
-        for index, field_name in enumerate(list_display[:]):
+        if not settings.JALALI_DATE_DEFAULTS['LIST_DISPLAY_AUTO_CONVERT']:
+            return list_display
+
+        list_display = list(list_display)
+        for index, field_name in enumerate(list_display):
             try:
                 field = self.opts.get_field(field_name)
             except FieldDoesNotExist:
                 pass
             else:
-                func_name = 'get_jalali_' + list_display[index]
-                if isinstance(field, models.DateTimeField):
+                if isinstance(field, (models.DateTimeField, models.DateField)):
+                    func_name = f'get_jalali_{list_display[index]}'
                     list_display[index] = func_name
-                    setattr(self, func_name, self.jalali_datetime_list_display(field))
-                elif isinstance(field, models.DateField):
-                    list_display[index] = func_name
-                    setattr(self, func_name, self.jalali_date_list_display(field))
+                    setattr(self, func_name, self.jalali_list_display(field))
         return list_display
 
-    def jalali_datetime_list_display(self, field):
+    def jalali_list_display(self, field):
         def func(obj):
-            strftime = settings.JALALI_DATE_DEFAULTS['Strftime']['datetime']
-            return datetime2jalali(getattr(obj, field.name)).strftime(strftime)
+            if isinstance(field, models.DateTimeField):
+                strftime = settings.JALALI_DATE_DEFAULTS['Strftime']['datetime']
+                convert_func = datetime2jalali
+            elif isinstance(field, models.DateField):
+                strftime = settings.JALALI_DATE_DEFAULTS['Strftime']['date']
+                convert_func = date2jalali
 
-        func.short_description = field.verbose_name
-        return func
-
-    def jalali_date_list_display(self, field):
-        def func(obj):
-            strftime = settings.JALALI_DATE_DEFAULTS['Strftime']['date']
-            return date2jalali(getattr(obj, field.name)).strftime(strftime)
+            return convert_func(getattr(obj, field.name)).strftime(strftime)
 
         func.short_description = field.verbose_name
         return func
