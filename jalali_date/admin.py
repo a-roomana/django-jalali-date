@@ -65,6 +65,7 @@ class ModelAdminJalaliMixin(object):
                 return convert_func(g_date).strftime(strftime)
 
         func.short_description = field.verbose_name
+        func.admin_order_field = f'-{field.name}'
         return func
 
 
