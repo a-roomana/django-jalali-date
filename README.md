@@ -20,6 +20,7 @@ To use this module you need to install jdatetime(and of course you need django) 
 
 #### Django
 I tested the latest version on some Django versions on python 3.8
+- django == 4.2
 - django == 3.2.8
 - django == 2.2.24
 
