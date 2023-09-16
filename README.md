@@ -80,12 +80,21 @@ JALALI_DATE_DEFAULTS = {
 
 (Optional) If you want the names of the dates to be displayed in Farsi, please add the following command to the settings.
 
+If you are on windows:
+```python
+LANGUAGE_CODE = 'fa'
+
+import locale
+locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
+```
+If you are on other operating systems:
 ```python
 LANGUAGE_CODE = 'fa'
 
 import locale
 locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
 ```
+
 
 #### views.py
 ```python
