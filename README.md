@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 
 # default settings (optional)
 JALALI_DATE_DEFAULTS = {
+   # if change it to true then all dates of the list_display will convert to the Jalali.
+   'LIST_DISPLAY_AUTO_CONVERT': False,
    'Strftime': {
         'date': '%y/%m/%d',
         'datetime': '%H:%M:%S _ %y/%m/%d',
@@ -164,8 +166,8 @@ class MyInlines2(StackedInlineJalaliMixin, admin.StackedInline):
 	
 @admin.register(FirstModel)
 class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-	# show jalali date in list display 
-	list_display = ['some_fields', 'get_created_jalali']
+	#for showing the Jalali date on the list_display, please change the LIST_DISPLAY_AUTO_CONVERT to true or create custom methods. for example:
+    list_display = ['some_fields', 'get_created_jalali']
 	
 	inlines = (MyInlines1, MyInlines2, )
 	raw_id_fields = ('some_fields', )
@@ -179,4 +181,5 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	def get_created_jalali(self, obj):
 		return datetime2jalali(obj.created).strftime('%a, %d %b %Y %H:%M:%S')
 ```
+![list-display](https://bayanbox.ir/view/6588806159227221741/Screenshot-from-2023-12-29-11-42-24.png)
 ![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
