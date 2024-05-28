@@ -10,6 +10,7 @@ $(document).ready(function () {
     JQ(".jalali_date-date").datepicker({
         dateFormat: "yy-mm-dd",
         changeMonth: !0,
-        changeYear: !0
+        changeYear: !0,
+        yearRange: "c-70:c+10"
     })
 });

@@ -8074,6 +8074,7 @@ var GREGORIAN_EPOCH = 1721425.5,
       dateFormat: "yy-mm-dd",
       changeMonth: !0,
       changeYear: !0,
+      yearRange: "c-70:c+10",
     });
     $('.add-row').click(function () {
         let JQ = jQuery || {};
@@ -8087,6 +8088,7 @@ var GREGORIAN_EPOCH = 1721425.5,
            dateFormat: "yy-mm-dd",
            changeMonth: !0,
            changeYear: !0,
+           yearRange: "c-70:c+10",
          });
        }, 300)
     })
