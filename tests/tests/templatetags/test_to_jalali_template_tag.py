@@ -26,6 +26,13 @@ class TestToJalaliTemplateTag(SimpleTestCase):
 	def default_datetime_format(self):
 		return settings.JALALI_DATE_DEFAULTS["Strftime"]["datetime"]
 
+	def test_none_g_date(self):
+		self.assertEqual(to_jalali(g_date=None), "-")
+
+	def test_invalid_type_g_date(self):
+		self.assertEqual(to_jalali(g_date=123), "-")
+		self.assertEqual(to_jalali(g_date="test-str"), "-")
+
 	def test_date_conversion(self):
 		self.assertEqual(
 			to_jalali(self.FAKE_DATE),
@@ -51,19 +58,6 @@ class TestToJalaliTemplateTag(SimpleTestCase):
 			to_jalali(g_date=self.FAKE_DATETIME, strftime=custom_strftime),
 			self.FAKE_DATETIME_JALALI.strftime(custom_strftime),
 		)
-
-	def test_error_prevention_with_none_g_date(self):
-		"""
-		Ensure that passing a `None` value as `g_date` will not result in an error.
-		"""
-		to_jalali(g_date=None)
-
-	def test_error_prevention_with_invalid_type_g_date(self):
-		"""
-		Ensure that passing a non-date value as `g_date` will not result in an error.
-		"""
-		to_jalali(g_date=123)
-		to_jalali(g_date="my-str")
 
 	def test_error_prevention_with_lazy_translatable_strftime(self):
 		"""
