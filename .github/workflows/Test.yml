@@ -1,4 +1,4 @@
-name: Review
+name: Test
 on:
   pull_request:
     branches:

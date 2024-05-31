@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import codecs
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def read_me(filename):
@@ -9,7 +10,7 @@ def read_me(filename):
 
 setup(
     name='django-jalali-date',
-    version='1.1.1',
+    version='1.1.2',
     python_requires='>=3',
     packages=find_packages(),
     include_package_data=True,
@@ -32,11 +33,19 @@ setup(
     zip_safe=False,
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Django',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Framework :: Django',
+        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.2',
+        'Framework :: Django :: 5.0',
     ],
 )

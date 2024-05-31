@@ -1,8 +1,12 @@
 
 
 [![PyPi Version](https://img.shields.io/pypi/v/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
+[![Github Tests](https://github.com/a-roomana/django-jalali-date/workflows/Tests/badge.svg?branch=master)](https://github.com/a-roomana/django-jalali-date/actions)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-jalali-date.svg)](https://pypistats.org/packages/django-jalali-date)
 [![GitHub stars](https://img.shields.io/github/stars/a-roomana/django-jalali-date.svg?style=social)](https://github.com/a-roomana/django-jalali-date)
+
+[![Python Version](https://img.shields.io/pypi/pyversions/django-jalali-date.svg)](https://pypi.python.org/pypi/django-jalali-date)
+
 # django-jalali-date
 
 Jalali Date support for user interface. Easy conversion of DateTimeField to JalaliDateTimeField within the admin site, view and templates.
