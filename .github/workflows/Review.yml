@@ -1,0 +1,45 @@
+name: Review
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  unit-test:
+    strategy:
+      matrix:
+        python-version: [ "3.8", "3.9", "3.10", "3.11" ]
+        django-version: [ "2.2.*", "3.2.*", "4.2.*", "5.0.*" ]
+        jdatetime-version: [ "3.8.*", "4.1.*", "5.0.*" ]
+        exclude:
+          # Django 5 does not support Python 3.8 and 3.9.
+          - django-version: "5.0.*"
+            python-version: "3.8"
+          - django-version: "5.0.*"
+            python-version: "3.9"
+          # Django 3 does not support Python 3.11.
+          - django-version: "3.2.*"
+            python-version: "3.11"
+          # Django 2 does not support Python 3.10 and 3.11.
+          - django-version: "2.2.*"
+            python-version: "3.10"
+          - django-version: "2.2.*"
+            python-version: "3.11"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Django ${{ matrix.django-version }}
+        run: pip install django==${{ matrix.django-version }}
+      - name: Install Jdatetime ${{ matrix.jdatetime-version }}
+        run: pip install jdatetime==${{ matrix.jdatetime-version }}
+      - name: Run unit tests
+        run: python runtests.py
