@@ -5,6 +5,7 @@ from django import get_version
 from django.conf import settings
 
 from jalali_date import date2jalali, datetime2jalali
+from jalali_date.utils import normalize_strftime
 
 django_version = get_version()
 if StrictVersion(django_version) >= StrictVersion('1.9'):
@@ -25,16 +26,6 @@ class ObjectContents(object):
 
 	def contents(self):
 		return self.value
-
-
-def normalize_strftime(strftime):
-	"""
-	Normalize strftime values to make sure their usable for datetime libraries.
-	"""
-	if not isinstance(strftime, str):
-		# Convert non-str values to str to support stuff like "lazy_translations".
-		strftime = str(strftime)
-	return strftime
 
 
 @register.filter

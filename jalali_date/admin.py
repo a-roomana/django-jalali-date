@@ -4,6 +4,7 @@ from django.db import models
 
 from jalali_date import date2jalali, datetime2jalali
 from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
+from jalali_date.utils import normalize_strftime
 from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
 
 overrides = {
@@ -62,6 +63,7 @@ class ModelAdminJalaliMixin(object):
             if not g_date:
                 return ''
             else:
+                strftime = normalize_strftime(strftime)
                 return convert_func(g_date).strftime(strftime)
 
         func.short_description = field.verbose_name
@@ -89,4 +91,3 @@ class TabularInlineJalaliMixin(object):
         formfield_overrides.update(self.formfield_overrides)
         self.formfield_overrides = formfield_overrides
         super(TabularInlineJalaliMixin, self).__init__(*args, **kwargs)
-
