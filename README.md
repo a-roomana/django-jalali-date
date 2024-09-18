@@ -100,7 +100,7 @@ LANGUAGE_CODE = 'fa'
 import locale
 locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
 ```
-Or if you don't know which operating system your program is going to run on:
+Or if you want your program to be able to run on any platform:
 ```python
 import locale
 import sys
