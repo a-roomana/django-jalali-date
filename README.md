@@ -100,6 +100,16 @@ LANGUAGE_CODE = 'fa'
 import locale
 locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
 ```
+Or if you want your program to be able to run on any platform:
+```python
+import locale
+import sys
+
+if sys.platform.startswith('win32'):
+    locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
+else:
+    locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
+```
 
 
 #### views.py
