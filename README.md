@@ -164,7 +164,7 @@ class TestForm(forms.ModelForm):
 	<!-- loading by form (if used AdminJalaliDateWidget) -->
 		{{ form.media }}
 ```
-![example-template-form](http://bayanbox.ir/view/4091856023129600494/photo-2019-04-06-11-11-03-min.jpg)
+![example-template-form](https://raw.githubusercontent.com/a-roomana/django-jalali-date/master/screenshots/example-template-form.png)
 
 #### admin.py
 ```python
@@ -195,5 +195,5 @@ class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 	def get_created_jalali(self, obj):
 		return datetime2jalali(obj.created).strftime('%a, %d %b %Y %H:%M:%S')
 ```
-![list-display](https://bayanbox.ir/view/6588806159227221741/Screenshot-from-2023-12-29-11-42-24.png)
-![example-admin](http://bayanbox.ir/view/2877111068605695571/Screenshot-from-2016-07-26-01-37-07.png)
+![list-display](https://raw.githubusercontent.com/a-roomana/django-jalali-date/master/screenshots/list-display.png)
+![example-admin](https://raw.githubusercontent.com/a-roomana/django-jalali-date/master/screenshots/example-admin.png)
