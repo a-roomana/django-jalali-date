@@ -11,7 +11,6 @@ JALALI_DATE_DEFAULTS = {
     'Static': {
         'js': [
             'admin/js/django_jalali.min.js',
-            'admin/js/prevent_default_listener.min.js'
         ],
         'css': {
             'all': [
