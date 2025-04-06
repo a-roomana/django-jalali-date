@@ -66,41 +66,18 @@ JALALI_DATE_DEFAULTS = {
     },
     'Static': {
         'js': [
-            # loading datepicker
             'admin/js/django_jalali.min.js',
-            # OR
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
-            # 'admin/js/main.js',
         ],
         'css': {
             'all': [
-                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+              'admin/css/django_jalali.min.css',
             ]
         }
     },
 }
 ```
 
-(Optional) If you want the names of the dates to be displayed in Farsi, please add the following command to the settings.
-
-If you are on windows:
-```python
-LANGUAGE_CODE = 'fa'
-
-import locale
-locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
-```
-If you are on other operating systems:
-```python
-LANGUAGE_CODE = 'fa'
-
-import locale
-locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
-```
-Or if you want your program to be able to run on any platform:
+(Optional) If you want the names of the dates to be displayed in Persian, please add the following command to the settings.
 ```python
 import locale
 import sys
