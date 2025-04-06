@@ -21,7 +21,7 @@ class AdminJalaliDateWidget(AdminDateWidget):
         return forms.Media(js=[static(path) for path in js], css=css)
 
     def __init__(self, attrs=None, format=None):
-        final_attrs = {'class': 'jalali_date-date', 'size': '10'}
+        final_attrs = {'class': 'jalali_date-date', 'data-jdp': {}, 'data-jdp-only-date': {}}
         if attrs is not None:
             final_attrs.update(attrs)
         super(AdminJalaliDateWidget, self).__init__(attrs=final_attrs, format=format)
