@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from distutils.version import StrictVersion
+from packaging.version import Version
 
 from django import get_version
 from django.conf import settings
@@ -8,7 +8,7 @@ from jalali_date import date2jalali, datetime2jalali
 from jalali_date.utils import normalize_strftime
 
 django_version = get_version()
-if StrictVersion(django_version) >= StrictVersion('1.9'):
+if Version(django_version) >= Version('1.9'):
 	from django.template import Library
 else:
 	from django.template.base import Library
