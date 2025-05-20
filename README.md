@@ -14,7 +14,7 @@ Jalali Date support for user interface. Easy conversion of DateTimeField to Jala
 
 ## Dependency
 
-To use this module you need to install jdatetime(and of course you need django) and pytz module which you can install it with easy_install or pip
+To use this module you need to install django, packaging, jdatetime and pytz module which you can install it with easy_install or pip
 
 
 ## Version Compatibility
